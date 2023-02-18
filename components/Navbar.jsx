@@ -13,7 +13,7 @@ const Navbar = () => {
       </p>
       <button
         type="button"
-        className="cart-icon"
+        className="cart-icon flex flex-col"
         onClick={() => setShowCart(true)}
       >
         <AiFillShopping />

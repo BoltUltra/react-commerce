@@ -1,6 +1,7 @@
 import { useStateContext } from "@/context/StateContext";
 import { urlFor } from "@/lib/client";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useRef } from "react";
 import toast from "react-hot-toast";
 import {
@@ -13,8 +14,24 @@ import { TiDeleteOutline } from "react-icons/ti";
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } =
-    useStateContext();
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useStateContext();
+
+  const router = useRouter();
+  function payment() {
+    setShowCart(false);
+    console.log(totalPrice);
+    router.push({
+      pathname: "/checkout",
+      query: { totalPrice: totalPrice, cartItems: cartItems },
+    });
+  }
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
@@ -51,9 +68,60 @@ const Cart = () => {
                   src={urlFor(item?.image[0])}
                   className="cart-product-image"
                 />
+                <div className="item-desc">
+                  <div className="flex top">
+                    <h5>{item.name}</h5>
+                    <h4>${item.price}</h4>
+                  </div>
+                  <div className="flex bottom">
+                    <div>
+                      <p className="quantity-desc">
+                        <span
+                          className="minus"
+                          onClick={() =>
+                            toggleCartItemQuantity(item._id, "dec")
+                          }
+                        >
+                          <AiOutlineMinus />
+                        </span>
+                        <span className="num" onClick="">
+                          {item.quantity}
+                        </span>
+                        <span
+                          className="plus"
+                          onClick={() =>
+                            toggleCartItemQuantity(item._id, "inc")
+                          }
+                        >
+                          <AiOutlinePlus />
+                        </span>
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="remove-item"
+                      onClick={() => onRemove(item)}
+                    >
+                      <TiDeleteOutline />
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
         </div>
+        {cartItems.length >= 1 && (
+          <div className="cart-bottom">
+            <div className="total">
+              <h3>SubTotal: </h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className="btn-container">
+              <button type="button" className="btn" onClick={payment}>
+                Pay with Paystack
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

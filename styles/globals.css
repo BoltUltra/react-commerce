@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'Shadows Into Light', cursive;
   box-sizing: border-box;
-
 }
 
 ::-webkit-scrollbar {
@@ -22,7 +24,6 @@ a {
   max-width: 1400px;
   margin: auto;
   width: 100%;
-
 }
 
 .layout {
@@ -80,7 +81,6 @@ span.text-red {
 .logo {
   color: gray;
   font-size: 18px;
-
 }
 
 .cart-icon {
@@ -88,7 +88,7 @@ span.text-red {
   color: gray;
   cursor: pointer;
   position: relative;
-  transition: transform .4s ease;
+  transition: transform 0.4s ease;
   border: none;
   background-color: transparent;
 }
@@ -108,7 +108,6 @@ span.text-red {
   border-radius: 50%;
   text-align: center;
   font-weight: 600;
-
 }
 
 .products-container {
@@ -125,11 +124,10 @@ span.text-red {
   transform: scale(1, 1);
   transition: transform 0.5s ease;
   color: #324d67;
-
 }
 
 .product-card:hover {
-  transform: scale(1.1, 1.1)
+  transform: scale(1.1, 1.1);
 }
 
 .product-image {
@@ -157,7 +155,6 @@ span.text-red {
   height: 500px;
   line-height: 0.9;
   width: 100%;
-
 }
 
 .hero-banner-container .beats-solo {
@@ -197,7 +194,6 @@ span.text-red {
   height: 450px;
 }
 
-
 .desc {
   position: absolute;
   right: 10%;
@@ -207,7 +203,6 @@ span.text-red {
   display: flex;
   flex-direction: column;
   color: #324d67;
-
 }
 
 .desc p {
@@ -228,7 +223,6 @@ span.text-red {
   text-align: center;
   margin: 40px 0px;
   color: #324d67;
-
 }
 
 .products-heading h2 {
@@ -315,7 +309,6 @@ span.text-red {
   z-index: 100;
   /* will-change: transform; */
   transition: all 1s ease-in-out;
-
 }
 
 .cart-container {
@@ -325,7 +318,6 @@ span.text-red {
   float: right;
   padding: 40px 10px;
   position: relative;
-
 }
 
 .footer-container {
@@ -339,7 +331,6 @@ span.text-red {
   align-items: center;
   gap: 10px;
   justify-content: center;
-
 }
 
 .footer-container .icons {
@@ -408,7 +399,6 @@ span.text-red {
   justify-content: space-between;
   width: 350px;
   color: #324d67;
-
 }
 
 .item-desc .bottom {
@@ -430,7 +420,6 @@ span.text-red {
 
 .total h3 {
   font-size: 22px;
-
 }
 
 .remove-item {
@@ -444,10 +433,10 @@ span.text-red {
 .cart-bottom {
   position: absolute;
   bottom: 12px;
-  right: 5px;
+  background-color: #fff;
+  right: 0px;
   width: 100%;
-  padding: 30px 65px;
-
+  padding: 20px 65px;
 }
 
 .btn-container {
@@ -463,7 +452,7 @@ span.text-red {
   border: none;
   font-size: 20px;
   margin-top: 10px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   text-transform: uppercase;
   background-color: #f02d34;
   color: #fff;
@@ -482,7 +471,6 @@ span.text-red {
   margin: 40px;
   margin-top: 60px;
   color: #324d67;
-
 }
 
 .product-detail-image {
@@ -492,12 +480,11 @@ span.text-red {
   width: 400px;
   height: 400px;
   cursor: pointer;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .product-detail-image:hover {
   background-color: #f02d34;
-
 }
 
 .small-images-container {
@@ -580,7 +567,7 @@ span.text-red {
 }
 
 .buttons .add-to-cart:hover {
-  transform: scale(1.1, 1.1)
+  transform: scale(1.1, 1.1);
 }
 
 .buttons .buy-now {
@@ -599,7 +586,7 @@ span.text-red {
 }
 
 .buttons .buy-now:hover {
-  transform: scale(1.1, 1.1)
+  transform: scale(1.1, 1.1);
 }
 
 .quantity-desc {
@@ -625,7 +612,6 @@ span.text-red {
 
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
-
 }
 
 .maylike-products-wrapper {
@@ -656,7 +642,6 @@ span.text-red {
 .cancel-wrapper {
   background-color: white;
   min-height: 60vh;
-
 }
 
 .success,
@@ -714,7 +699,57 @@ span.text-red {
   margin-top: 10px;
 }
 
-@media screen and (max-width:800px) {
+.payment-form {
+  display: grid;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.checkout-products {
+  margin-top: 0.75rem;
+  margin-top: 0.875rem;
+}
+
+.checkout-form {
+  margin-top: 1.25rem;
+}
+
+.checkout-field {
+  display: flex;
+  margin-top: 0.5rem;
+  flex-direction: column;
+}
+
+.checkout-field label {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.checkout-field input {
+  border: none;
+  border-bottom: 1px solid #ebebeb;
+  border-bottom-width: 1px;
+  outline: 0;
+}
+
+.checkout-product {
+  display: flex;
+  margin-left: 1.25rem;
+}
+
+.checkout-product img {
+  object-fit: cover;
+  padding: 0.5rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.75rem;
+  background: #ebebeb;
+}
+
+@media screen and (max-width: 800px) {
   .hero-banner-container {
     height: 560px;
   }
@@ -735,7 +770,7 @@ span.text-red {
     width: 77%;
     left: 30%;
     top: 6%;
-    height: 56%
+    height: 56%;
   }
 
   .banner-desc .left h3 {
@@ -810,7 +845,6 @@ span.text-red {
 
   .product {
     padding: 20px 5px;
-
   }
 
   .product .cart-product-image {
@@ -837,8 +871,6 @@ span.text-red {
   .top {
     flex-wrap: wrap;
     gap: 10px;
-
-
   }
 
   .item-desc .bottom {
@@ -870,7 +902,6 @@ span.text-red {
 
   .success-wrapper,
   .cancel-wrapper {
-
     min-height: 69vh;
   }
 
