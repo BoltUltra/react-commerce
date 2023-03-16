@@ -1,7 +1,7 @@
 import { Product } from "@/components";
 import { useStateContext } from "@/context/StateContext";
 import { client, urlFor } from "@/lib/client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -10,9 +10,12 @@ import {
 } from "react-icons/ai";
 
 const ProductDetails = ({ product, products }) => {
+  // console.log(product);
+  // console.log(products);
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { incQty, decQty, qty, onAdd } = useStateContext();
+
   return (
     <div>
       <div className="product-detail-container">
@@ -102,11 +105,15 @@ export const getStaticPaths = async () => {
   }`;
 
   const products = await client.fetch(query);
+
   const paths = products.map((product) => ({
     params: {
       slug: product.slug.current,
     },
   }));
+
+  // console.log("Products:", products);
+  // console.log("Paths:", paths);
 
   return {
     paths,
@@ -115,7 +122,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
+  const query = `*[_type == "product" && slug.current == "${slug}"][0]`;
   const productsQuery = '*[_type =="product"]';
 
   const product = await client.fetch(query);

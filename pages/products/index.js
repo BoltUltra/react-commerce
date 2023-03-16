@@ -1,25 +1,31 @@
-import React from "react";
+import { FooterBanner, Product } from "@/components";
 import { client } from "@/lib/client";
-import { Product, FooterBanner, HeroBanner } from "../components";
+import Head from "next/head";
+import React from "react";
 
-const index = ({ products, bannerData, nailData }) => {
+const Products = ({ products, bannerData, nailData }) => {
   return (
-    <>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-
+    <div>
+      <Head>
+        <title>Products</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+          referrerpolicy="no-referrer"
+        />
+      </Head>
       <div className="products-heading">
         <h2>Best Selling Skin Products</h2>
         <p>Products of many variations</p>
       </div>
 
       <div className="products-container">
-        {products?.slice(0, 10).map((product) => (
+        {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
-
       <FooterBanner footerBanner={bannerData && bannerData[0]} />
-    </>
+    </div>
   );
 };
 
@@ -38,4 +44,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default index;
+export default Products;
